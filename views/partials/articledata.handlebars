@@ -1,0 +1,64 @@
+<div id="articles">
+		<input type="hidden" id="articleCountInfo" value="{{articleCount}}">
+		<input type="hidden" id="savedCountInfo" value="{{savedCount}}">
+		{{#if articles}}
+			{{#each articles}}
+				<div class="panel article panel-primary">
+				  <div class="panel-heading">
+				  	{{!-- using handlebars html escaping -> {{{content}}} --}}
+				    <h1 class="panel-title">{{{this.headline}}}</h1>
+				  </div>
+				  <div class="panel-body">
+				  	<div class="col-xs-8">
+				  		<p class="summary">{{{this.summary}}}</p>
+					    <p class="byline">{{{this.byline}}}</p>
+					    <p class="link"><a href="{{this.link}}" target="_blank">Read full story</a></p>
+				  	</div>
+				  	<div class="col-sm-2 col-sm-offset-2">
+				  		{{#unless this.saved_flag}}
+				  		<button data-id="{{this._id}}" class="btn btn-success saveArticle">Add to Saved</button>
+				  		{{/unless}}
+				  		{{#if this.saved_flag}}
+				  		<i style='color: #57c65c;' class='fa fa-3x fa-check' aria-hidden='true'></i>
+				  		{{/if}}
+				  	</div>
+				  </div>
+				</div>
+			{{/each}}
+		{{/if}}
+		{{#unless articles}}
+			{{#if saved}}
+				{{#each saved}}
+					<div class="panel savedArticle panel-primary">
+					  <div class="panel-heading">
+					  	{{!-- using handlebars html escaping -> {{{content}}} --}}
+					    <h2 class="panel-title">{{{this.headline}}}</h2>
+					  </div>
+					  <div class="panel-body">
+					  	<div class="col-xs-7">
+					  		<p class="summary">{{{this.summary}}}</p>
+						    <p class="byline">{{{this.byline}}}</p>
+						    <p class="link"><a href="{{this.link}}" target="_blank">Read full story</a></p>
+					  	</div>
+					  	<div class="col-md-1 col-md-offset-1 col-sm-2">
+					  		<button data-id="{{this._id}}" class="btn btn-success addNote">ARTICLE NOTES</button>
+					  	</div>
+					  	<div class="col-md-1 col-md-offset-1 col-sm-2">
+					  		<button data-id="{{this._id}}" class="btn btn-danger undoSaveArticle">DELETE FROM SAVED</button>
+					  	</div>
+					  </div>
+					</div>
+				{{/each}}
+			{{/if}}
+			{{#unless saved}}
+			<div class="panel noArticle panel-danger">
+			  <div class="panel-heading">
+			    <h2 class="panel-title">No articles yet</h2>
+			  </div>
+			  <div class="panel-body">
+			    Click on 'Scrape New Articles' to get new articles. Click on 'Add to Saved' to save, and add notes.
+			  </div>
+			</div>
+			{{/unless}}
+		{{/unless}}
+	</div>

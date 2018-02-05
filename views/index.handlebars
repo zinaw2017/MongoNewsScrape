@@ -1,0 +1,52 @@
+{{!-- Menubar with Home, Saved Articles, button -> Scrape New Articles --}}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Mongo News</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home <span class="home badge">{{articleCount}}</span></a></li>
+        <li><a href="/saved">Saved Articles <span class="saved badge">{{savedCount}}</span></a></li>
+      </ul>
+      <button id="scrapeArticles" class="btn btn-danger">Scrape New Articles</button>
+    </div>
+  </div>
+</nav>
+<div class="container">
+	<div id="articlesDiv">
+		{{> articledata }}
+	</div>	
+
+	{{!-- Modal window with handlebars placeholder for number of articles on scrape of website --}}
+	<div id="scrapeDoneNotificationModal" class="modal fade text-center" role="dialog">
+	    <div class="modal-dialog">
+	        <!-- Error Modal content-->
+	      	<div class="modal-content">
+	        	<div class="modal-header">
+	          		<button type="button" class="close" data-dismiss="modal"><i class="fa fa-lg fa-times-circle-o" aria-hidden="true"></i></button>
+	        	</div>
+	        	<div class="modal-body">
+	          		<h3 id="message">Scraped <span id="scrapedArticleCount"></span> articles from NY Times</h3>
+	        	</div>
+	        	<div class="modal-footer">
+	          		<button type="button" class="btn btn-danger center-block" data-dismiss="modal">Ok</button>
+	        	</div>
+	      	</div>
+	    </div>
+  	</div>
+</div>
+
+{{!-- Sticky footer --}}
+<footer class="footer">
+  <div class="container">
+    <p class="footerContent text-center">&copy; Mongo News | Legesse</p>
+  </div>
+</footer>
