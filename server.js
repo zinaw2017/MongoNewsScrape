@@ -35,7 +35,7 @@ if(process.env.MONGODB_URI) {
  mongoose.connect("mongodb://");
 
 }else {
-   mongoose.connect("mongodb://<dbuser>:<dbpassword>@ds233218.mlab.com:33218/mongewscrape/localhost/mongonewsscrape");
+   mongoose.connect("mongodb://<zinaw>:<123456>@ds233218.mlab.com:33218/mongewscrape/localhost/mongonewsscrape");
 }
 // Getting mongoose connection
 var db = mongoose.connection;
