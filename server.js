@@ -32,10 +32,10 @@ app.set("view engine", "handlebars");
 // Database configuration with mongoose on production or dev environment
 if(process.env.MONGODB_URI) {
 	console.log("Attempting to connect to MLAB");
- mongoose.connect("mongodb://");
+ mongoose.connect("mongodb://<zinaw>:<123456>@ds233218.mlab.com:33218/mongewscrape/");
 
 }else {
-   mongoose.connect("mongodb://<zinaw>:<123456>@ds233218.mlab.com:33218/mongewscrape/localhost/mongonewsscrape");
+   mongoose.connect("mongodb://localhost/mongonewsscrape");
 }
 // Getting mongoose connection
 var db = mongoose.connection;
